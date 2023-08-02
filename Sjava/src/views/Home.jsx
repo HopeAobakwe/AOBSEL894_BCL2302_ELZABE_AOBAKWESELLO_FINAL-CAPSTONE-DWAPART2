@@ -83,7 +83,7 @@ const Home = ({ onShowSelect }) => {
       <header>
         <h1>Podcast App</h1>
         <input type="text" placeholder="Search by title..." value={searchQuery} onChange={handleSearchInputChange} />
-
+        
         <div className="sort-buttons">
           <button onClick={sortShowsByTitleAZ}>Sort A-Z</button>
           <button onClick={sortShowsByTitleZA}>Sort Z-A</button>
@@ -96,8 +96,8 @@ const Home = ({ onShowSelect }) => {
           <Show key={show.id} show={show} onShowSelect={onShowSelect} />
         ))}
       </div>
-      <Favorites favorites={favorites} onRemoveFromFavorites={handleRemoveFromFavorites} />
-    </div>
+      {/* <Favorites favorites={favorites} onRemoveFromFavorites={handleRemoveFromFavorites} />  */}
+     </div>
   );
 };
 

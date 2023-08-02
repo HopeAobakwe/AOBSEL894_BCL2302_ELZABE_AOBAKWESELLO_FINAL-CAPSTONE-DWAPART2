@@ -1,4 +1,5 @@
 import React from 'react';
+import Favorites from '../Favorites';
 
 const Episode = ({ episode, onToggleFavorite }) => {
   const handleToggleFavorite = () => {
@@ -9,13 +10,7 @@ const Episode = ({ episode, onToggleFavorite }) => {
     <div className="episode">
       <h3>{episode.title}</h3>
       <p>{episode.description}</p>
-      <audio controls>
-        <source src={episode.audioURL} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <button onClick={handleToggleFavorite}>
-        {episode.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-      </button>
+    
     </div>
   );
 };

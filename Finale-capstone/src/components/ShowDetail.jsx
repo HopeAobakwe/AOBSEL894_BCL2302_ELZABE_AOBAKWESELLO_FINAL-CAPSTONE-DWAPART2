@@ -1,4 +1,4 @@
-// Inside the 'ShowDetail' component
+
 import React, { useState } from 'react';
 
 function ShowDetail({ show }) {

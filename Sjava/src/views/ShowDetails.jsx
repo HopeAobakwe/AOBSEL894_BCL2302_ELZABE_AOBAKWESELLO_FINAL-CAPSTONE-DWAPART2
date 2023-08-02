@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchShowDetails } from '../api';
-// import Season from '../components/Season'; // Correct the import statement here
+import Season from '../components/Seasons'; // Correct the import statement here
 import Episode from '../components/Episodes';
 
 

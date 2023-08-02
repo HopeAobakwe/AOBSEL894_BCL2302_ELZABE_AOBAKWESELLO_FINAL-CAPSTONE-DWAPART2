@@ -15,9 +15,9 @@ const Season = ({ onSeasonSelect }) => {
     <div>
       {seasons.map((season) => (
         <div className="season" key={season.number}>
-          <img src={season.imageUrl} alt={`Preview of Season ${season.number}`} />
-          <h2>Season {season.number}</h2>
-          <p>Episodes: {season.episodes.length}</p>
+          <img src={season.images} alt={`Preview of Season ${season.season}`} />
+          <h2>Season {season.season}</h2>
+          
           <button onClick={() => onSeasonSelect(season.number)}>View Episodes</button>
         </div>
       ))}
