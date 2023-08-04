@@ -1,55 +1,210 @@
-#root {
-  max-width: 1280px;
+.podcast-data-container {
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.favorite-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  justify-content: center; /* Horizontally center the preview items */
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.preview-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.preview-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transform: translateZ(40px) rotateY(0);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 4px;
+}
+.preview-item:hover .preview-image {
+  transform: translateZ(60px) rotateY(30deg);
+}
+.preview-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.preview-description {
+  max-height: 150px; /* Adjust this value as needed */
+  overflow-y: auto;
+}
+.preview-details h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.preview-details p {
+  margin: 0;
+  color: #FFFFFF;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #C12222;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 60%;
+  /* Center the button horizontally */
+  display: block; /* Change display to block to use margin auto */
+  margin-left: auto; /* Set left margin to auto */
+  margin-right: auto; /* Set right margin to auto */
+}
+.show-data {
+  margin-top: 40px;
+  flex: 1; /* Take up available space in the container */
+}
+.show-data h2  {
+  margin-bottom: 10px;
+  color: white;
+}
+.show-data p {
+  color: #FFFFFF;
+}
+body {
+  background: linear-gradient(90deg, #e34d0d 1.18%, #082738 100%);
+}
+/* Add or modify existing styles as needed */
+.baku {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(to top right, #48105ca1, rgba(5, 161, 175, 0.588),#082738, black );
+  animation: KOLO 4s  linear infinite alternate;
+  padding: 1rem;
+  margin: 0;
+  width: 93vw; /* Take full viewport width */
+}
+.dihome a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.dihome a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: rgb(5, 161, 175);
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+.dihome {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.dihome a{
+  padding: 3px;
+}
+.dihome button{
+text-align: center;
+justify-content: center;
+width: 90px;
+}
+.dihome a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.sidebar h2 {
+  color: #FFFFFF;
+}
+.search-sort-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* Input and Select Styles */
+.search-sort-container input[type="text"] {
+  background-color: #ffffffa7;
+  padding: 8px; /* Increase the input's padding for larger size */
+  font-size: 16px; /* Increase the input's font size for larger size */
+  width: 250px; /* Adjust the input's width as needed */
+  border-radius: 10px;
+}
+.search-sort-container select {
+  background-color: #ffffffa7;
+  padding: 1px; /* Increase the select's padding for larger size */
+  font-size: 15px; /* Increase the select's font size for larger size */
+  width: 180px; /* Adjust the select's width as needed */
+  height: 30px;
+  border-radius: 10px;
+}
+.logo img {
+  width: 160px;
+  border-radius: 40%;
+}
+/* .senka{
+  display: flex;
+  flex-direction: column;
+} */
+/* Media Query - Increase input and select sizes for larger screens */
+@media (min-width: 1200px) {
+  .search-sort-container input[type="text"] {
+    padding: 15px; /* Increase the input's padding for larger screens */
+    font-size:18px; /* Increase the input's font size for larger screens */
+    width: 400px; /* Adjust the input's width as needed */
   }
-  to {
-    transform: rotate(360deg);
+  .search-sort-container select {
+    padding: 15px; /* Increase the select's padding for larger screens */
+    font-size: 18px; /* Increase the select's font size for larger screens */
+    width: 300px; /* Adjust the select's width as needed */
+    color: #000000;
+    height: 59px;
+  }
+  .dihome a{
+    font-size: x-large;
+    padding: 8px;
+  }
+  .dihome {
+    display: flex;
+    flex-direction: row;
+  }
+  .dihome button{
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@keyframes KOLO {
+  to { filter: hue-rotate(135deg);}
 }
-
-.card {
-  padding: 2em;
+.seas{
+  width: 300px;
 }
-
-.read-the-docs {
-  color: #888;
+.show-data{
+  width: 180px;
 }
-/* Add these styles to your CSS file or style block */
-
-.description-truncated {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.seas-data-container{
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.description-full {
-  display: block;
-  white-space: normal;
+.seas-data-container button{
+  width: 180px;
 }

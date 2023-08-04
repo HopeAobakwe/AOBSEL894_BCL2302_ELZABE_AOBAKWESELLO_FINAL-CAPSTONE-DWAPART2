@@ -67,7 +67,9 @@ function App() {
           <h1>{selectedShow.title}</h1>
           <p>{selectedShow.description}</p>
           <button onClick={() => handleBackToShows()}>Back to Shows</button>
-          <button onClick={() => setView('seasonList')}>View Seasons</button>
+          <button onClick={() => {
+            console.log(selectedShow) 
+            setView('seasonList')}}>View Seasons</button>
         </div>
       )}
 
