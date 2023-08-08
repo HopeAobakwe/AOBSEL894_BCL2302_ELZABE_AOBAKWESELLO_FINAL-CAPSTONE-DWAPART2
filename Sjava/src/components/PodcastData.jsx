@@ -4,10 +4,6 @@ import axios from 'axios';
 import Episode from './Episode';
 import Header from './Header';
 import Hero from './Hero'
-import { IconButton } from "@mui/material";
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import FavoritePodcast from "./favorites";
 
 const PodcastData = () => {
   const [previewData, setPreviewData] = useState([]);
@@ -199,7 +195,7 @@ const PodcastData = () => {
               ))}
             </ul>
           </>
-        )}
+      
       </div>
     );
   }
