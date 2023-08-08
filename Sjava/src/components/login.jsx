@@ -1,6 +1,6 @@
 import { ThemeSupa } from "@supabase/auth-ui-shared/dist";
 import {Auth} from '@supabase/auth-ui-react';
-import { supabase } from "../supabaseClient";
+import { supabase } from "../SupabaseClient";
 
 const Login =({onLogin, setShowAuth}) =>{
 const handleSession =(session)=>{

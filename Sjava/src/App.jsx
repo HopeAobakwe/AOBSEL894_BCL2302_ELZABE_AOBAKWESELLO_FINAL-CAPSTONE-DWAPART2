@@ -2,6 +2,7 @@ import PodcastData from './components/PodcastData';
 import {supabase} from './supabaseClient';
 import SupabaseClient from './supabaseClient';
 import React, {useState} from 'react';
+
 function App() {
   const [throwSignUp, setThrowSignUp] = useState("signUpPhase");
   React.useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
     
     <div className="App">
       <PodcastData />
-    
+      
       
     </div>
       }

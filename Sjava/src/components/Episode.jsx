@@ -21,3 +21,8 @@ const Episode = ({ episode, isPlaying, onTogglePlay, onPause }) => {
 };
 
 export default Episode;
+
+// this component encapsulates an audio player with play/pause 
+// functionality and a button to toggle playback state.
+//  It's designed to be reusable, allowing you to provide 
+//  different episodes and playback controls via props.

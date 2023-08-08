@@ -18,12 +18,11 @@ const Header = ({ searchQuery, handleSearchChange, sortBy, handleSortChange }) =
         />
       </nav>
 
-      <nav className='dihome'>
-        <button className="btnLogin-popup">Login </button>
-      </nav>
+      
 
     </header>
   );
 };
 
 export default Header;
+

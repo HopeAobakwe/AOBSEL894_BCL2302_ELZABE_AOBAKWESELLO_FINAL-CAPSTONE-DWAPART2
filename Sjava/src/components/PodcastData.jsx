@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import Login from './login'
+import Favorites from './Favorites'; 
+import Login from './login';
 import axios from 'axios';
-import Episode from './Episode';
 import Header from './Header';
-import Hero from './Hero'
+import Hero from './Hero';
 
 const PodcastData = () => {
   const [previewData, setPreviewData] = useState([]);
@@ -12,11 +12,12 @@ const PodcastData = () => {
   const [loadingShow, setLoadingShow] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEpisode, setCurrentEpisode] = useState(null);
-  const [favorites, setFavorites] = useState([]);
+  const [Favorites, setFavorites] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('title');
   const [selectedSeason, setSelectedSeason] = useState(null);
+ 
   const [isLoggedIn, setIsLoggedIn]=useState('signUpPhase')
   const genreTitleMapping = {
     1: 'Personal Growth',
@@ -45,10 +46,11 @@ const PodcastData = () => {
     fetchShows();
   }, []);
 
-  const format = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day:'numeric'};
-    return new (dateString).toLocaleDateString(undefined, options);
-  }
+  const formatDate= (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+  
 
   const fetchShows = async () => {
     try {
@@ -143,25 +145,12 @@ const PodcastData = () => {
   }
 
   
-  // React.useEffect(() => {
-  //   const authListener = supabase.auth.onAuthStateChange((event, session) => {
-  //     if (event === 'SIGNED_IN' && session) {
-  //       console.log('User signed in successfully:', session.user.email);
-  //       setIsLoggedIn('startPhase');
-  //     }
-  //   });
-  //   return () => {
-  //     authListener.unsubscribe();
-  //   };
-  // }, []);
 
   if (!showData) {
     return ( 
       
       <div className="podcast-data-container">
-          {/* {isLoggedIn === 'signUpPhase' && <Login onLogin={() => setIsLoggedIn('startPhase')} />}
-          {isLoggedIn === 'startPhase' && ( */}
-          <>
+         
             <Header
               searchQuery={searchQuery}
               handleSearchChange={handleSearchChange}
@@ -174,15 +163,12 @@ const PodcastData = () => {
                 <li key={show.id} className="preview-item">
                   <div className="image">
                     <img src={show.image} alt={show.title} className="preview-image" />
-                    <div className="dots">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+                   
                   </div>
                   <div className="infos">
                     <h3>Title: {show.title}</h3>
                     <p>Seasons: {show.seasons}</p>
+                    <p>Last Updated: {formatDate(show.updated)}</p>
                   </div>
                   
                   {selectedPreviewId === show.id && (
@@ -194,8 +180,7 @@ const PodcastData = () => {
                 </li>
               ))}
             </ul>
-          </>
-      
+       
       </div>
     );
   }
@@ -240,3 +225,9 @@ const PodcastData = () => {
 };
 
 export default PodcastData;
+
+// This code essentially creates a podcast application 
+// that allows users to browse, search,
+//  sort, and manage their favorite podcast shows and episodes.
+//   It offers a rich user experience with the ability 
+//   to explore show details and listen to episodes within the app.

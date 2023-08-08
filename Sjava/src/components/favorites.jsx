@@ -1,72 +1,58 @@
-import  { useState } from "react";
-const Genre = {
-  1: "Personal Growth",
-  2: "True Crime and Investigative Journalism",
-  3: "History",
-  4: "Comedy",
-  5: "Entertainment",
-  6: "Business",
-  7: "Fiction",
-  8: "News",
-  9: "Kids and Family",
-};
-const FavoritePodcast = ({ favoritePodcasts }) => {
-const [sortOption, setSortOption] = useState("az");
-const handleSort = (option) => {
-setSortOption(option);
+import React, { useState } from 'react';
+const Favorites = () => {
+  const [favorites, setFavorites] = useState([]);
+  // Function to add an episode to favorites
+  const addToFavorites = (episode) => {
+    if (!favorites.some((fav) => fav.id === episode.id)) {
+      setFavorites([...favorites, { ...episode, addedAt: new Date() }]);
+    }
   };
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric" };
-    return date.toLocaleDateString(undefined, options);
+  // Function to remove an episode from favorites
+  const removeFromFavorites = (episodeId) => {
+    setFavorites(favorites.filter((fav) => fav.id !== episodeId));
   };
- 
-    useEffect(() => {
-        let filteredShows = previewData.filter((show) =>
-          show.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      
-        if (sortBy === '[A-Z]') {
-          filteredShows.sort((a, b) => a.title.localeCompare(b.title));
-        } else if(sortBy == '[Z-A]'){
-          filteredShows.sort((a, b) => b.title.localeCompare(a.title));
-        } else if (sortBy === 'genre') {
-          filteredShows.sort((a, b) => a.genres - b.genres);
-        } else if (sortBy === 'Oldest') {
-          filteredShows.sort((a, b) => new Date(a.updated) - new Date(b.updated));
-        } else if (sortBy === 'Latest') {
-          filteredShows.sort((a, b) => new Date(b.updated) - new Date(a.updated));
-        }
-      
-        setFilteredData(filteredShows);
-      }, [previewData, searchQuery, sortBy]);
-      
+  // Function to arrange favorites by show titles (A-Z)
+  const sortByTitleAscending = () => {
+    setFavorites([...favorites].sort((a, b) => a.showTitle.localeCompare(b.showTitle)));
+  };
+  // Function to arrange favorites by show titles (Z-A)
+  const sortByTitleDescending = () => {
+    setFavorites([...favorites].sort((a, b) => b.showTitle.localeCompare(a.showTitle)));
+  };
+  // Function to arrange favorites by date updated (ascending)
+  const sortByDateAscending = () => {
+    setFavorites([...favorites].sort((a, b) => a.addedAt - b.addedAt));
+  };
+  // Function to arrange favorites by date updated (descending)
+  const sortByDateDescending = () => {
+    setFavorites([...favorites].sort((a, b) => b.addedAt - a.addedAt));
+  };
   return (
     <div>
-      <h2>Favorite Podcasts</h2>
-      <div className="sort-buttons">
-        <button onClick={() => handleSort("A-Z")}>Sort A-Z</button>
-        <button onClick={() => handleSort("Z-A")}>Sort Z-A</button>
-        <button onClick={() => handleSort("oldest")}>Sort by Date Ascending</button>
-        <button onClick={() => handleSort("latest")}>Sort by Date Descending</button>
-      </div>
-      {sortedFavorites.length > 0 ? (
-        <ul>
-          {sortedFavorites.map((podcast) => (
-            <li key={podcast.id}>
-              <strong>{podcast.title}</strong>
-              <img src={podcast.image} className="card--images" alt="Podcast" width="30%" />
-      <p>Seasons: {podcast.seasons}</p>
-      <p>Genres: {podcast.genres.map((genre) => Genre[genre]).join(",")}</p>
-      <p>Updated: {podcast.updated}</p>
-              Added on: {formatDate(podcast.addedDate)}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No favorite podcasts yet. Start adding some!</p>
-      )}
+      <h2>My Favorites</h2>
+      <button onClick={sortByTitleAscending}>Sort by Show Title (A-Z)</button>
+      <button onClick={sortByTitleDescending}>Sort by Show Title (Z-A)</button>
+      <button onClick={sortByDateAscending}>Sort by Date Added (Ascending)</button>
+      <button onClick={sortByDateDescending}>Sort by Date Added (Descending)</button>
+      <ul>
+        {favorites.map((favorite) => (
+          <li key={favorite.id}>
+            <h3>Show: {favorite.showTitle}</h3>
+            <p>Season: {favorite.season}</p>
+            <p>Title: {favorite.title}</p>
+            <p>Date Added: {favorite.addedAt.toLocaleString()}</p>
+            <button onClick={() => removeFromFavorites(favorite.id)}>Remove from Favorites</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
-export default FavoritePodcast;
+export default Favorites;
+
+// this component manages a list of favorite podcast episodes, allowing users to add, 
+// remove, and sort episodes based on
+//  different criteria. It provides a
+//   UI interface for displaying the 
+//   list of favorites along 
+//   with options to sort and remove episodes
