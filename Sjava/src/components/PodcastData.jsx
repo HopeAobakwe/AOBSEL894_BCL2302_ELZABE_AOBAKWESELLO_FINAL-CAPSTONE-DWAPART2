@@ -176,7 +176,7 @@ const PodcastData = () => {
                   )}
                   <button onClick={() => toggleDescription(show.id)}>Description</button>
                   <button onClick={() => handleShowClick(show.id)}>Seasons</button>
-                  <button onClick={() => addToFavorites(show)}>Add to Favorites</button>
+                  <button onClick={() => hsn(show)}>Add to Favorites</button>
                 </li>
               ))}
             </ul>
